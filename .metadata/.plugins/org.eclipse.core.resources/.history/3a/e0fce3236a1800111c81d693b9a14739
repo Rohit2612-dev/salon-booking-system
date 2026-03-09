@@ -1,0 +1,5 @@
+package com.example.salon.dto;
+
+public class StaffRequestDTO {
+
+}

@@ -1,0 +1,74 @@
+package com.example.salon.dto;
+
+import com.example.salon.entity.SalonService;
+import com.example.salon.entity.Staff;
+import com.example.salon.entity.User;
+
+public class DtoMapper {
+	
+	//USER
+	public static UserResponseDTO toUserResponse(User user) {
+		if(user == null) 
+			return null;
+		
+		return new UserResponseDTO(
+				user.getId(),
+				user.getName(),
+				user.getEmail(),
+				user.getRole()
+				);
+	}
+	
+	public static User toUserEntity(UserRequestDTO dto) {
+		User user = new User();
+		user.setName(dto.getName());
+		user.setEmail(dto.getEmail());
+		user.setPassword(dto.getPassword());
+		user.setRole(dto.getRole() != null ? dto.getRole(): "USER");
+		return user;
+	}
+	
+	
+	//STAFF
+	public static StaffResponseDTO toStaffResponse(Staff staff) {
+		if(staff == null)
+			return null;
+		return new StaffResponseDTO(
+				staff.getId(),
+				staff.getName(),
+				staff.getSpecialization()
+				);
+	}
+	
+	public static Staff toStaffEntity(StaffRequestDTO dto) {
+		Staff staff = new Staff();
+		staff.setName(dto.getName());
+		staff.setSpecialization(dto.getSpecialization());
+		return staff;
+	}
+	
+	
+	//SALON SERVICES
+	public static SalonServiceResponseDTO toSalonServiceResponse(SalonService salonService){
+		if(salonService == null)
+			return null;
+		return new SalonServiceResponseDTO(
+				salonService.getId(),
+				salonService.getName(),
+				salonService.getDescription(),
+				salonService.getPrice(),
+				salonService.getDuration()
+				);			
+	}
+	
+	public static SalonService toSalonServiceEntity(SalonServiceRequestDTO dto) {
+		SalonService salonService = new SalonService();
+		salonService.setName(dto.getName());
+		salonService.setDescription(dto.getDescription());
+		salonService.setPrice(dto.getPrice());
+		salonService.setDuration(dto.getDuration());
+		return salonService;
+	}
+}
+
+

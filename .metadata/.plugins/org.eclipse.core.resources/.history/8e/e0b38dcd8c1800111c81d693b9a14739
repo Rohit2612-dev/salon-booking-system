@@ -1,0 +1,34 @@
+package com.example.salon.dto;
+
+import com.example.salon.entity.User;
+
+public class DtoMapper {
+	
+	//USER
+	public static UserResponseDTO toUserResponse(User user) {
+		if(user == null) 
+			return null;
+		
+		return new UserResponseDTO(
+				user.getId(),
+				user.getName(),
+				user.getEmail(),
+				user.getRole()
+				);
+	}
+	
+	public static User toUserEntity(UserRequestDTO dto) {
+		User user = new User();
+		user.setName(dto.getName());
+		user.setEmail(dto.getEmail());
+		user.setPassword(dto.getPassword());
+		user.setRole(dto.getRole() != null ? dto.getRole(): "USER");
+		return user;
+	}
+	
+	
+	//STAFF
+	
+	}
+
+
